@@ -1,7 +1,7 @@
 # OSS PR AI: Automated Pull Request Risk Assessment
 
 ## Overview
-OSS PR AI is a machine learning-driven tool designed to quantify the "fraud risk" of open-source contributions. By analyzing commit history, contributor reputation, and code patterns, this system provides a real-time risk score (0.0 - 1.0) for maintainers, mitigating supply chain attacks and low-quality spam.
+OSS PR AI is a machine learning driven tool built to measure the fraud risk of open source contributions. It evaluates commit history, contributor reputation, and code patterns to generate a real time risk score (0–1), helping maintainers avoid supply chain threats and low effort spam.
 
 ## Key Features
 * **Deep Learning Analysis:** Utilizes TensorFlow to detect anomalous patterns in PR diffs.
