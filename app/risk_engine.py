@@ -2,14 +2,8 @@ import os
 import random
 import numpy as np
 import pickle
-
-try:
-    import tensorflow as tf
-    from tensorflow.keras.preprocessing.sequence import pad_sequences
-    TF_AVAILABLE = True
-except ImportError:
-    TF_AVAILABLE = False
-    print("[!] TensorFlow not found. Running in Heuristic-Only Mode.")
+import tensorflow as tf
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 class RiskEngine:
     def __init__(self):
@@ -20,9 +14,6 @@ class RiskEngine:
         self._load_brain()
 
     def _load_brain(self):
-        if not TF_AVAILABLE:
-            return
-
         try:
             if os.path.exists(self.model_path) and os.path.exists(self.token_path):
                 print("[*] Loading LSTM Model and Tokenizer...")
@@ -38,8 +29,6 @@ class RiskEngine:
     def analyze_pr(self, pr_data):
         score = 0.0
         reasons = []
-
-        # 1. Heuristic Checks
         user = pr_data.get('user', 'unknown')
         if 'bot' in user.lower():
             score += 0.1
@@ -50,8 +39,7 @@ class RiskEngine:
             score += 0.3
             reasons.append("Short description")
 
-        # 2. AI Inference (Only if TF is available and model loaded)
-        if TF_AVAILABLE and self.model and self.tokenizer:
+        if self.model and self.tokenizer:
             try:
                 text = (pr_data.get('title', '') + " " + (pr_data.get('body', '') or ""))
                 seq = self.tokenizer.texts_to_sequences([text])
