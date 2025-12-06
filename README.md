@@ -1,12 +1,7 @@
-# OSS PR AI: Automated Pull Request Risk Assessment
+# OSS PR AI: Predictive Triage for High Velocity Repos. Automated risk assessment pipeline for open source maintainers. Reduces time to merge by ~50% by filtering low quality contributions before human review. (This is what it's intended)
+`Status: Prototype (Alpha) - Maintained`
 
-## Overview
-OSS PR AI is a machine learning driven tool built to measure the fraud risk of open source contributions. It evaluates commit history, contributor reputation, and code patterns to generate a real time risk score (0–1), helping maintainers avoid supply chain threats and low effort spam.
-
-## Key Features
-* **Deep Learning Analysis:** Utilizes TensorFlow to detect anomalous patterns in PR diffs.
-* **Risk Scoring Engine:** Heuristic + ML hybrid model to evaluate contributor intent.
-* **CI/CD Integration:** Designed to run as a GitHub Action.
+OSS PR AI operates as a middleware agent between your repository and your CI/CD pipeline. It utilizes a hybrid evaluation engine combining static heuristic analysis with a TensorFlow LSTM model to predict the merge probability of incoming Pull Requests.
 
 ## System Architecture
 ```mermaid
@@ -22,10 +17,10 @@ graph TD
 
 ## Stack
 * Python 3.10+
-* TensorFlow / Keras
+* TensorFlow | Keras
 * PyGithub
 * Pandas
 
 ## Status
-* **Current Version:** v0.1.0-alpha (Prototype)
+* **Current Version:** v0.1.1-alpha (Prototype)
 * **License:** MIT
